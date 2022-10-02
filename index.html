@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>Make tada from todo!</title>
+</head>
+<style>
+    .newly-created-todo:hover {
+        text-decoration: line-through;    
+        cursor: pointer;
+        }
+</style>
+<body>
+
+    <section class="hero is-primary">
+        <div class="hero-body">
+          <p class="title">
+            Make tada from to do
+          </p>
+          <p class="subtitle">
+            and feel that instant satisfaction!
+          </p>
+        </div>
+      </section>
+
+      <nav class="panel">
+        <div class="panel-block">
+          <p class="control has-icons-left">
+            <input id="add" class="input" type="text" placeholder="add some todos">
+            <span class="icon is-left">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </span>
+          </p>
+        </div>
+    
+       <ul id="todo-items">
+       </ul>
+        
+        <div class="panel-block">
+          <button id="reset" class="button is-link is-outlined is-fullwidth">
+            Clear all
+          </button>
+        </div>
+      </nav>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>developed with ❤️ by <a href="https://github.com/lenondrej/new-vanilla-tada-app">Lenon</a> ~ styled with
+            <a href="https://bulma.io/">Bulma</a></strong>
+          </p>
+        </div>
+      </footer>
+
+    <script>
+        const add = document.querySelector('#add');
+        const todo = document.querySelector('#todo-items');
+        const reset = document.querySelector('#reset');
+
+        add.addEventListener('change', () => {
+            const newTodo = document.createElement('li');
+            todo.appendChild(newTodo);
+            newTodo.classList.add('panel-block');
+            newTodo.classList.add('is-active');
+            newTodo.classList.add('newly-created-todo');
+            newTodo.textContent = add.value;
+            add.value = '';
+        });
+
+        reset.addEventListener('click', () => {
+            const todos = document.querySelectorAll('.newly-created-todo');
+            for (let todo of todos) {
+                todo.remove();
+            };
+        });
+    </script>
+    
+</body>
+</html>
